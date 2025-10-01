@@ -1,0 +1,21 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Outfit:wght@100..900&family=Prata&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-audiowide: "Audiowide", sans-serif; 
+}
+
+
+body {
+  background-color: black;
+}
+
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
