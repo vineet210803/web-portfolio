@@ -289,11 +289,11 @@ export default function App() {
             <Card style={{ overflow: "hidden" }}>
               <a
                 className="text-white p-6"
-                href="https://github.com/vineet210803 "
+                href="https://web-portfolio-kappa-two.vercel.app/"
               >
                 Protfolio [Live]
               </a>
-              <a href="https://github.com/vineet210803 ">
+              <a href="https://web-portfolio-kappa-two.vercel.app/">
                 <img src="/portfolio.png" alt="" />
               </a>
             </Card>
