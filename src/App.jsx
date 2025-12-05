@@ -14,6 +14,9 @@ import Carousel from "./components/Carousel";
 import RotatingText from "./components/RotatingText";
 import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md";
+import PixelTransition from "./components/PixelCard";
+import TargetCursor from "./components/TargetCursor";
+import FlowingMenu from "./components/Achivement";
 import {
   SiReact,
   SiNextdotjs,
@@ -32,10 +35,25 @@ import {
 import { FaFileAlt } from "react-icons/fa";
 
 export default function App() {
+  const demoItems = [
+    {
+      text: "Global Rank 2146 in CodeVita 2025 Round 1",
+    },
+    {
+      text: "Global Rank 426 in CodeVita 2025 Round 2",
+    },
+    {
+      text: " Global rank 1004 in Codeforces Round 1049",
+    },
+    {
+      text: "Solved 700+ DSA Problems",
+    },
+  ];
+
   const items = [
     {
       label: "Resume",
-      href: "https://drive.google.com/file/d/11yi1CkReRi-GD-A2tQvrewbq45rjWioT/view?usp=sharing",
+      href: "https://drive.google.com/file/d/1WsNZAAB_U3XF6R21Gsvny3oTZCbctkpp/view?usp=drivesdk&usp=embed_facebook&usp=embed_facebook",
       icon: <FaFileAlt />,
     },
     {
@@ -136,20 +154,26 @@ export default function App() {
 
   return (
     <div
-      className="relative min-h-screen w-full font-audiowide"
+      className="relative min-h-screen w-full font-audiowide cursor-none"
       style={{ overflow: "hidden" }}
     >
+      <TargetCursor
+        spinDuration={2}
+        hideDefaultCursor={true}
+        parallaxOn={true}
+      />
       {/* Particle background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 ">
         <Particles
           particleColors={["#ffffff", "#ffffff"]}
-          particleCount={900}
-          particleSpread={5}
-          speed={0.1}
-          particleBaseSize={100}
+          particleCount={800}
+          particleSpread={7}
+          speed={0.04}
+          particleBaseSize={200}
           moveParticlesOnHover={true}
           alphaParticles={true}
           disableRotation={false}
+          opacity={0.5}
         />
       </div>
 
@@ -166,7 +190,7 @@ export default function App() {
           zIndex: 50,
           alignItems: "center",
         }}
-        className="font-audiowide"
+        className="font-audiowide cursor-target"
       >
         <GooeyNav
           items={items}
@@ -181,25 +205,28 @@ export default function App() {
       </div>
 
       {/* Hero Section (h1 + Lanyard) */}
-      <div className="relative w-full h-[400px] flex justify-center pt-48 ">
+      <div className="relative w-full h-[400px] flex justify-center pt-48 .cursor ">
         {/* h1 text */}
         <h1 className="flex text-9xl text-white z-10 gap-38">
-          <span>Vineet</span>
+          <div>
+
+            <button className="text-white cursor-target">Vineet</button>
+          </div>
           <span className="text-[#0f3e8a]">Singh</span>
         </h1>
 
         {/* Lanyard overlay (centered on top of h1) */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none w-full">
           <div style={{ transform: "scale(1.05)" }}>
-            <Lanyard position={[0, 0, 20]} gravity={[0, -35, 0]} />
+            <Lanyard position={[-1, 0, 20]} gravity={[0, -35, 0]} />
           </div>
         </div>
       </div>
 
       {/* Acheivement section */}
-      <div className="w-full flex justify-center mt-38 mb-20 z-10">
+      <div className="w-full flex justify-center mt-38 mb-20 z-10 ">
         {/* This inner div contains both text elements and applies the background/padding */}
-        <div className="flex items-center space-x-3  py-3 px-5 ">
+        <div className="flex items-center space-x-3  py-3 px-5">
           {/* New "I am" text */}
           <span className="text-xl  text-white">I am</span>
           {/* Rotating Text Component: Updated mainClassName */}
@@ -213,7 +240,7 @@ export default function App() {
               "3⭐ on GeeksForGeeks",
             ]}
             // Changed bg-cyan-300 to bg-[#5227ff] (new color) and reduced px/py values for tighter spacing
-            mainClassName="px-1 sm:px-2 md:px-3 bg-[#001b56] text-white overflow-hidden py-0 sm:py-0.5 md:py-1 rounded-lg text-xl"
+            mainClassName=" sm:px-2 md:px-3 bg-[#001b56] text-white overflow-hidden py-0 sm:py-0.5 md:py-1 rounded-lg text-xl cursor-target "
             staggerFrom={"first"}
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -224,80 +251,593 @@ export default function App() {
             splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
             rotationInterval={2000}
-            // loop (Default: true)
             loop={true}
-            // auto (Default: true)
             auto={true}
-            // splitby (Default: "characters")
             splitby="characters"
-            // onNext (Default: undefined - added a placeholder function)
-
-            // elementLevelClassName (Default: ..) - Placeholder class added
             elementLevelClassName="inline-block"
           />
         </div>
       </div>
 
       {/* Projects heading */}
-      <div className="flex flex-col items-center mt-40 gap-5">
+      <div className=" flex flex-col items-center mt-40 gap-5">
         <h2
-          className="w-full text-center font-audiowide text-3xl text-white"
+          className="w-auto text-center font-audiowide text-3xl text-white cursor-target"
           style={{ fontFamily: "'Audiowide', cursive" }}
         >
           Projects
         </h2>
       </div>
 
-      {/* Project + CardSwap */}
-      <div className="flex">
-        <div className="w-full min-h-screen flex items-center justify-evenly ">
-            <Project />
+      <div
+        style={{
+          margin: "10px",
+          marginLeft: "35px",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          gap: "32px",
+          padding: "20px",
+        }}
+      >
+        {/* ---------- CARD 1: Forever Shopping ---------- */}
+        <div
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
+        >
+          <PixelTransition
+            firstContent={
+              <img
+                src="shopping.jpg"
+                alt="Forever Shopping Cover"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2.4rem",
+                    color: "#ffffff",
+                    letterSpacing: "1px",
+                    textTransform: "uppercase",
+                    textShadow: "0 4px 15px rgba(0,0,0,0.6)",
+                  }}
+                >
+                  Forever Shopping
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/Ecommerce.git"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    href="https://ecommerce-frontend-two-phi.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
         </div>
 
+        {/* ---------- CARD 2 ---------- */}
         <div
-          className="mb-60 w-1/2"
-          style={{ height: "600px", position: "relative" }}
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
         >
-          <CardSwap
-            cardDistance={60}
-            verticalDistance={70}
-            delay={3000}
-            pauseOnHover={false}
-          >
-            <Card style={{ overflow: "hidden" }}>
-              <a
-                className="text-white p-6"
-                href="https://ecommerce-frontend-two-phi.vercel.app/"
+          <PixelTransition
+            firstContent={
+              <img
+                src="chat.jpg"
+                alt="Project 2"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
               >
-                Forever-Shopping [Live]
-              </a>
-              <a href="https://ecommerce-frontend-two-phi.vercel.app/">
-                <img className="w-200" src="/forever.jpg" alt="" />
-              </a>
-            </Card>
-            <Card style={{ overflow: "hidden" }}>
-              <a
-                className="text-white p-6"
-                href="https://employee-management-system-nine-tau.vercel.app/"
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2rem",
+                    color: "#ffffff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Chat-App
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/Realtime_Chat_App-main"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href="https://chat-frontend-beta-two.vercel.app/"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
+        </div>
+
+        {/* ---------- CARD 3 ---------- */}
+        <div
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
+        >
+          <PixelTransition
+            firstContent={
+              <img
+                src="bot.jpg"
+                alt="Project 3"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
               >
-                Employee Managment System [Live]
-              </a>
-              <a href="https://employee-management-system-nine-tau.vercel.app/">
-                <img src="/ems.jpg" alt="" />
-              </a>
-            </Card>
-            <Card style={{ overflow: "hidden" }}>
-              <a
-                className="text-white p-6"
-                href="https://web-portfolio-kappa-two.vercel.app/"
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2rem",
+                    color: "#ffffff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  AI ChatBot
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/MERN-AI-ChatBot-final"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    href="https://ai-chat-bot-eta-ruddy.vercel.app/"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
+        </div>
+
+        {/* ---------- CARD 4 ---------- */}
+        <div
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
+        >
+          <PixelTransition
+            firstContent={
+              <img
+                src="ems.jpg"
+                alt="Project 4"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
               >
-                Protfolio [Live]
-              </a>
-              <a href="https://web-portfolio-kappa-two.vercel.app/">
-                <img src="/portfolio.png" alt="" />
-              </a>
-            </Card>
-          </CardSwap>
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2rem",
+                    color: "#ffffff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Employee Management System
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/Employee_Management_System-React.js"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    href="https://employee-management-system-nine-tau.vercel.app/"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
+        </div>
+
+        {/* ---------- CARD 5 ---------- */}
+        <div
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
+        >
+          <PixelTransition
+            firstContent={
+              <img
+                src="passkey.jpg"
+                alt="Passkey: Password Manager"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2rem",
+                    color: "#ffffff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Passkey: Password Manager
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/Passkey-MERN"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
+        </div>
+
+        {/* ---------- CARD 6 ---------- */}
+        <div
+          className="cursor-target"
+          style={{
+            width: "90%",
+            maxWidth: "300px", // adjustable
+            height: "300px", // must define this
+            borderRadius: "12px",
+            overflow: "hidden", // prevents any spill
+          }}
+        >
+          <PixelTransition
+            firstContent={
+              <img
+                src="portfolio.jpg"
+                alt="Project 6"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "12px",
+                }}
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  background:
+                    "linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.95))",
+                  borderRadius: "12px",
+                  padding: "20px",
+                  gap: "20px",
+                  pointerEvents: "auto",
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "2rem",
+                    color: "#ffffff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Portfolio
+                </p>
+
+                <div style={{ display: "flex", gap: "16px" }}>
+                  <a
+                    href="https://github.com/vineet210803/web-portfolio"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#ffffff",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    GitHub
+                  </a>
+
+                  <a
+                    href="#"
+                    target="_blank"
+                    style={{
+                      padding: "10px 18px",
+                      background: "#4ADE80",
+                      color: "#000",
+                      fontWeight: "600",
+                      borderRadius: "8px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Live
+                  </a>
+                </div>
+              </div>
+            }
+            gridSize={4}
+            pixelColor="#001b56"
+            once={false}
+            animationStepDuration={0.2}
+            className="custom-pixel-card"
+          />
         </div>
       </div>
 
@@ -311,12 +851,12 @@ export default function App() {
         }}
       >
         <h2
-          className="w-full text-center font-audiowide text-3xl mb-10 text-white"
+          className="w-auto text-center font-audiowide text-3xl mb-10 text-white cursor-target"
           style={{ fontFamily: "'Audiowide', cursive" }}
         >
           Tech Stacks
         </h2>
-        <div className="gap-5 mt-5  flex flex-col items-center w-full h-[75vh]">
+        <div className="gap-5 flex flex-col items-center w-full h-[75vh]">
           <InfiniteScroll
             items={infiniteScrollItems}
             isTilted={true}
@@ -328,6 +868,20 @@ export default function App() {
           />
         </div>
       </div>
+      {/* ------Achievment------- */}
+      <div className=" flex flex-col items-center mt-30 gap-5">
+        <h2
+          className="w-auto text-center font-audiowide text-3xl mb-5 text-white cursor-target"
+          style={{ fontFamily: "'Audiowide', cursive" }}
+        >
+          Projects
+        </h2>
+      </div>
+        <div className="cursor-target" style={{ height: "550px", position: "relative" }}>
+          <FlowingMenu items={demoItems} />
+        </div>
+
+      
     </div>
   );
 }
