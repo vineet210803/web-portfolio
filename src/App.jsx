@@ -874,7 +874,7 @@ export default function App() {
           className="w-auto text-center font-audiowide text-3xl mb-5 text-white cursor-target"
           style={{ fontFamily: "'Audiowide', cursive" }}
         >
-          Projects
+          Achievments
         </h2>
       </div>
         <div className="cursor-target" style={{ height: "550px", position: "relative" }}>
